@@ -1,0 +1,18 @@
+{
+  "layouts": {
+    "dactyl_manuform": {
+      "5x6": {
+        "layout": [
+          "LLLLLLRRRRRR",
+          "LLLLLLRRRRRR",
+          "LLLLLLRRRRRR",
+          "LLLLLLRRRRRR",
+          "__LL____RR__",
+          "____LLRR____",
+          "____LLRR____",
+          "____LLRR____"
+        ]
+      }
+    }
+  }
+}
