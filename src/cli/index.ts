@@ -5,7 +5,9 @@ import { prettifyKeymapFile } from "../keymap";
 
 const { version } = JSON.parse(
   fs
-    .readFileSync(path.resolve(path.join(__dirname, "../../package.json")))
+    .readFileSync(
+      path.resolve(path.join(__dirname, "../../../../package.json"))
+    )
     .toString()
 );
 
