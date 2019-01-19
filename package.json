@@ -1,20 +1,75 @@
 {
-  "name": "kbd-layout-prettifier",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "kbd-prettier",
+  "version": "0.0.0",
+  "description": "A tool for reformatting your qmk keyboard layouts.",
+  "bin": "dist/commonjs/bin/kbd-prettier.js",
+  "main": "dist/commonjs/src/index.js",
+  "module": "dist/esm/src/index.js",
+  "files": [
+    "dist",
+    "docs",
+    "README.md"
+  ],
   "scripts": {
-    "test": "jest"
+    "build": "npm run build:commonjs",
+    "build:commonjs": "tsc -build tsconfig.commonjs.json",
+    "build:commonjs:watch": "tsc -build tsconfig.commonjs.json -w",
+    "build:esm": "tsc -build tsconfig.esm.json",
+    "build:esm:watch": "tsc -build tsconfig.esm.json -w",
+    "commit": "git-cz",
+    "docs": "./node_modules/.bin/typedoc --tsconfig tsconfig.commonjs.json --out ./docs",
+    "lint": "tslint -p tsconfig.commonjs.json",
+    "prettify": "prettier --write src/**/*{.ts,.md}",
+    "semantic-release": "semantic-release",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:blakedietz/kbd-prettier.git"
+  },
+  "author": "bdietz",
+  "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^23.3.10",
+    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/exec": "^3.3.2",
+    "@semantic-release/git": "^7.0.8",
+    "@semantic-release/github": "^5.2.9",
+    "@semantic-release/npm": "^5.1.4",
+    "@types/jest": "^23.3.12",
+    "@types/node": "^10.12.18",
+    "commitizen": "^3.0.5",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^1.3.1",
     "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
+    "semantic-release": "16.0.0-beta.9",
     "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
+    "typedoc": "^0.14.2",
     "typescript": "^3.2.2"
   },
   "dependencies": {
-    "@types/node": "^10.12.18"
+    "commander": "^2.19.0"
+  },
+  "config": {
+    "loglevel": "verbose",
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run build && npm run test && lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

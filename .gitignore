@@ -74,3 +74,12 @@ typings/
 # Serverless directories
 .serverless
 
+docs/
+dist/
+
+src/**/*.js
+src/**/*.js.map
+
+bin/**/*.js
+bin/**/*.js.map
+
