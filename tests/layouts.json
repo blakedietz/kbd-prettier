@@ -13,5 +13,14 @@
             "____LLRR____"
           ]
         }
+      },
+    "ergotravel/keymaps/blakedietz/keymap.c: {
+          "keyMatrix": [
+            "LLLLLLLRRRRRRR",
+            "LLLLLLLRRRRRRR",
+            "LLLLLLLRRRRRRR",
+            "LLLL_LLRR_RRRR"
+          ]
+        }
       }
 }
